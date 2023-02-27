@@ -1,0 +1,14 @@
+@charset "UTF-8";
+
+.orderHistoryFlexBox{
+	display: flex;
+}
+
+.orderHistorySection1{
+	width: 70%;
+	padding-right: 30px;
+}
+
+.orderHistorySection2{
+	width: 30%;
+}

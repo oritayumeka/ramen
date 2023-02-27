@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ラクラクラーメン</title>
+    <link rel="stylesheet" th:href="@{/css/common.css}" />
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/top.css}" />
+    <link rel="stylesheet" th:href="@{/css/responsive.css}" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link
+      href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+          <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button
+              type="button"
+              class="navbar-toggle collapsed"
+              data-toggle="collapse"
+              data-target="#bs-example-navbar-collapse-1"
+              aria-expanded="false"
+            >
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span> <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/item}">
+              <!-- 企業ロゴ -->
+              <img
+                alt="main log"
+                th:src="@{/img_noodle/logo-top.png}"
+              />
+            </a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div
+            class="collapse navbar-collapse"
+            id="bs-example-navbar-collapse-1"
+          >
+            <p class="navbar-text navbar-right">
+            <!-- マイページ -->
+              <span th:unless="${session.user == null}">
+              <a th:href="@{/mypage/toMypage}">
+              <img alt="cart" th:src="@{/img_noodle/mypage.png}">
+              </a>
+              </span>&nbsp;&nbsp;
+            
+               <!-- ショッピングカート -->
+              <a th:href="@{/cart/showCart}">
+              <img alt="cart" th:src="@{/img_noodle/cart.png}">
+              </a>&nbsp;&nbsp;
+              
+              <!-- 注文履歴 -->
+               <a th:href="@{/orderHistory}">
+              <img alt="cart" th:src="@{/img_noodle/orderHistory.png}">
+              </a>&nbsp;&nbsp;
+                            
+              <!-- ランキング -->
+              <a th:href="@{/orderRanking/showTotalRanking}">
+              <img alt="cart" th:src="@{/img_noodle/ranking.png}">
+              </a>&nbsp;&nbsp;
+              
+              <!-- ログイン/ログアウト -->
+              <span th:if="${session.user == null}">
+              <!-- ログイン -->
+              <a th:href="@{/user/toLogin}">
+              <img alt="login" th:src="@{/img_noodle/login.png}">
+              </a></span>&nbsp;&nbsp;
+              
+              <span th:unless="${session.user == null}">
+              <!-- ログアウト -->
+              <a th:href="@{/user/logout}">
+              <img alt="logout" th:src="@{/img_noodle/logout.png}">
+              </a></span>
+            </p>
+          </div>
+          <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+      </nav>
+
+        <!-- スマートフォン用のメニューアイコン -->
+        <div class="menu-icon">
+          <span class="fa fa-bars"></span>
+        </div>
+      </div>
+    </header>
+
+    <div class="top-wrapper">
+      <div class="container">
+      <h1><br><br></h1>
+        <h1>RAKURAKU RAMEN</h1>
+        <br>
+          <p>ラーメンやつけ麺、まぜそばなど</p>
+          <p>豊富な種類の本格ラーメンをご自宅で手軽に味わえます。</p>
+          <p>ご指定いただいた日時にデリバリーでお届けします。</p>
+          <br>
+        <div class="btn-wrapper">
+          <a th:href="@{/user/toRegister}" class="btn signup">会員登録</a>&emsp;&emsp; 
+          
+          <span th:if="${session.user == null}">
+          <a th:href="@{/user/toLogin}" class="btn signup">ログイン</a>&emsp;&emsp;
+          </span>
+          
+          <span th:unless="${session.user == null}"> 
+          <a th:href="@{/user/logout}" class="btn signup">ログアウト</a>&emsp;&emsp; 
+          </span> 
+          
+          <a th:href="@{/item}" class="btn signup">商品一覧</a>
+        </div>
+        <br><br><br><br><br>
+      </div>
+    </div>
+
+
+  </body>
+</html>

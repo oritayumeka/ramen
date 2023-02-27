@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${DB_SERVER:localhost}:5432/ec-202110b
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+  mail:
+    host: ${MAIL_SERVER:localhost}
+    port: ${MAIL_PORT:1025}
+server:
+  servlet:
+    context-path: /ec-202110b
+    session:
+      timeout: 15m

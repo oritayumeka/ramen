@@ -1,0 +1,24 @@
+package com.example.common;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+@Configuration
+public class SecurityConfig  extends WebSecurityConfigurerAdapter{
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		// SpringSecurityを導入すると毎回アクセス時にSpringがログイン画面を出してしまう
+		// 下記の設定は全てのパスをログインしなくてもアクセスできるようにする設定
+		http.authorizeRequests().anyRequest().permitAll();
+	}
+	
+	 @Bean
+	 public PasswordEncoder passwordEncoder() {
+	     return new BCryptPasswordEncoder();
+	 }
+
+}
